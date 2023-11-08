@@ -63,8 +63,10 @@ class ReservaGUI:
         bicicletas_label.pack()
 
         for i, bicicleta in enumerate(self.bicicletas):
-            bicicleta_button = tk.Button(self.root, text=f"{i + 1}. Modelo: {bicicleta.modelo}, Precio: ${bicicleta.precio}",
-                                        command=lambda b=bicicleta, i=i: self.seleccionar_bicicleta(b, i))
+            # Crea una cadena con la información de la bicicleta
+            info_bicicleta = f"Modelo: {bicicleta.modelo}\nDisponibilidad: {bicicleta.estado}\nUbicación: {bicicleta.ubicacion}\nPrecio: ${bicicleta.precio}"
+            # Crea el botón con la información de la bicicleta
+            bicicleta_button = tk.Button(self.root, text=info_bicicleta, command=lambda b=bicicleta, i=i: self.seleccionar_bicicleta(b, i))
             bicicleta_button.pack()
 
     def mostrar_seleccion_fecha_hora(self):
